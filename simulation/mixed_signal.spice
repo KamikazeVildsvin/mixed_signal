@@ -1,0 +1,48 @@
+** sch_path:
+*+ /Users/nlv/Documents/DTU/9.Semester/IC-Open-Source/xschem-projects/mixed_signal/mixed_signal.sch
+**.subckt mixed_signal
+V1 VSS 0 0
+.save i(v1)
+V2 VDD VSS 1.8
+.save i(v2)
+V3 CLK VSS PULSE(0 1.8 0 20n 20n {0.5*1/FREQ} {1/FREQ})
+.save i(v3)
+x1 VDD VSS CLK COUNT[0] COUNT[1] COUNT[2] COUNT[3] RST upcounter
+V4 RST VSS PULSE(1.8 0 0 0 20n {2*1/FREQ})
+.save i(v4)
+**** begin user architecture code
+
+.param mc_mm_switch=0
+.param mc_pr_switch=0
+.include /usr/local/share/pdk/sky130A/libs.tech/ngspice/corners/tt.spice
+.include /usr/local/share/pdk/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
+.include /usr/local/share/pdk/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
+.include /usr/local/share/pdk/sky130A/libs.tech/ngspice/corners/tt/specialized_cells.spice
+
+
+
+
+* ngspice commands
+
+.param FREQ=1e6
+
+
+.save all
+.control
+op
+write mixed_signal.raw
+tran 10n 20u
+writeappend
+write mixed_signal.raw
+.endc
+
+
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  upcounter.sym # of pins=5
+** sym_path:
+*+ /Users/nlv/Documents/DTU/9.Semester/IC-Open-Source/xschem-projects/mixed_signal/upcounter.sym
+.include ../synth.spice
+.end

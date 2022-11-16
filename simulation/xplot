@@ -1,0 +1,6 @@
+*ngspice plot file
+.control
+set color2=rgb:ff/00/00
+plot "A1" 
+remcirc
+.endc

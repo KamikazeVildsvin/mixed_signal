@@ -1,0 +1,50 @@
+*SPICE netlist created from verilog structural netlist module upcounter by vlog2Spice (qflow)
+*This file may contain array delimiters, not for use in simulation.
+
+.include /usr/local/share/pdk/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice
+
+.subckt upcounter VDD VSS clk count[0] count[1] count[2] count[3]
++ rst_n 
+
+X_09_ rst_n count[0] VSS VSS VDD VDD 
++ _00_
++ sky130_fd_sc_hd__lpflow_isobufsrc_1
+X_10_ count[0] count[1] rst_n VSS VSS VDD 
++ VDD
++ _04_ sky130_fd_sc_hd__o21ai_0
+X_11_ count[0] count[1] _04_ VSS VSS VDD 
++ VDD
++ _01_ sky130_fd_sc_hd__a21oi_1
+X_12_ count[0] count[2] count[1] VSS VSS VDD 
++ VDD
++ _05_ sky130_fd_sc_hd__nand3_1
+X_13_ count[0] count[1] count[2] VSS VSS VDD 
++ VDD
++ _06_ sky130_fd_sc_hd__a21oi_1
+X_14_ _06_ rst_n _05_ VSS VSS VDD 
++ VDD
++ _02_ sky130_fd_sc_hd__and3b_1
+X_15_ count[0] count[2] count[3] count[1] VSS VSS 
++ VDD
++ VDD _07_ sky130_fd_sc_hd__nand4_1
+X_16_ count[0] count[2] count[1] count[3] VSS VSS 
++ VDD
++ VDD _08_ sky130_fd_sc_hd__a31o_1
+X_17_ rst_n _07_ _08_ VSS VSS VDD 
++ VDD
++ _03_ sky130_fd_sc_hd__and3_1
+X_18_ clk _00_ VSS VSS VDD VDD 
++ count[0]
++ sky130_fd_sc_hd__dfxtp_1
+X_19_ clk _01_ VSS VSS VDD VDD 
++ count[1]
++ sky130_fd_sc_hd__dfxtp_1
+X_20_ clk _02_ VSS VSS VDD VDD 
++ count[2]
++ sky130_fd_sc_hd__dfxtp_1
+X_21_ clk _03_ VSS VSS VDD VDD 
++ count[3]
++ sky130_fd_sc_hd__dfxtp_1
+
+.ends
+.end
