@@ -4,3 +4,10 @@ This repo shows an example of how to simulate a digital standard cell block gene
 A simple 4 bit upcounter has been written in verilog and mapped to the `sky130` PDK using `yosys`. Using the two binaries `vlog2Verilog` and
 `vlog2Spice` from `qflow`, this RTL digital block can be expressed as a spice netlist. `xschem` is then used to create a symbol and simulate
 the digital counter using `ngspice`. The spice netlist can be found in `synth.spice`.
+
+### Skywater 130nm Path
+For this to work on your machine, you need to have install the Skywater 130nm PDK in the `/usr/local/share/pdk` directory using [`open_pdks`](http://opencircuitdesign.com/open_pdks/).
+This is the default install directory when using the `open_pdks` installation.
+
+It is also assumed that the user supplies the `xschemrc` from the `open_pdks` them self, to setup xschem probally. 
+All of this is explain in the `libs.tech/xschem` directory in the `open_pdks` installation.
